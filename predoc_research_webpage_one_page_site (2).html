@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><!-- TODO: Your Name --> · Predoctoral Research</title>
+  <meta name="description" content="<!-- TODO: 1–2 sentence professional summary for recruiters and faculty. -->" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23000'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-family='Arial' font-size='52' fill='white'%3ER%3C/text%3E%3C/svg%3E" />
+
+  <!-- Open Graph / Twitter for nicer previews when your QR opens this link -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="<!-- TODO: Your Name --> · Predoctoral Research" />
+  <meta property="og:description" content="<!-- TODO: 1–2 sentence professional summary. -->" />
+  <meta property="og:image" content="<!-- Optional: add absolute URL to a preview image -->" />
+  <meta property="og:url" content="<!-- TODO: canonical URL where you’ll host this page -->" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- One-file, lightweight styling -->
+  <style>
+    :root{
+      --bg: #0b0c10; /* page background */
+      --panel: #111317; /* cards */
+      --muted: #9aa3af; /* subtle text */
+      --text: #e5e7eb; /* main text */
+      --brand: #7c3aed; /* accent */
+      --brand-2:#22d3ee; /* secondary accent */
+      --ok: #10b981;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --ring: rgba(124,58,237,.35);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --max: 1040px;
+    }
+    html,body{height:100%}
+    body{
+      margin:0; background:radial-gradient(1200px 600px at 100% -10%, rgba(34,211,238,.06), transparent 70%),
+      radial-gradient(1200px 600px at -20% 110%, rgba(124,58,237,.08), transparent 70%), var(--bg);
+      color:var(--text); font: 14.5px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+      letter-spacing:.2px;
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 20px 80px}
+    header{
+      display:grid; gap:18px; grid-template-columns: 1.4fr .9fr; align-items:start; margin-top:14px
+    }
+    @media (max-width:900px){ header{ grid-template-columns:1fr; } }
+    .card{ background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .p{ padding:22px 22px }
+    .badge{ display:inline-flex; gap:6px; align-items:center; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.1); color:var(--brand-2); font-weight:600; background: rgba(124,58,237,.08)}
+    .name{ font-size: clamp(26px, 3.3vw, 40px); line-height:1.15; margin:8px 0 }
+    .role{ color:var(--muted); margin:0 0 6px }
+    .lead{ color:#f3f4f6; font-size:16px; margin:10px 0 0 }
+
+    .cta{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px }
+    .btn{ display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; font-weight:600; border:1px solid rgba(255,255,255,.12); background:#141821; cursor:pointer; text-decoration:none; color:var(--text) }
+    .btn:hover{ border-color:rgba(255,255,255,.25)}
+    .btn.primary{ background: linear-gradient(135deg,var(--brand) 0%, var(--brand-2) 100%); color:white; border:0 }
+
+    nav{ position:sticky; top:0; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index:4;}
+     .nav{ display:flex; gap:14px; overflow:auto; padding:10px 0; }
+    .nav a{ color:var(--muted); text-decoration:none; padding:10px 12px; border-radius:10px }
+    .nav a.active, .nav a:hover{ color:white; background:rgba(124,58,237,.15)}
+
+    section{ margin-top:22px }
+    h2{ font-size: clamp(18px, 2.2vw, 22px); margin: 8px 0 10px }
+    .grid{ display:grid; gap:14px; grid-template-columns: repeat(12, 1fr)}
+    .col-8{ grid-column: span 8 }
+    .col-4{ grid-column: span 4 }
+    .col-6{ grid-column: span 6 }
+    .col-12{ grid-column: span 12 }
+    @media (max-width:900px){ .col-8,.col-6,.col-4{ grid-column:span 12 } }
+
+    .item{ padding:16px 16px; border-radius:14px; background: var(--panel); border:1px solid rgba(255,255,255,.06) }
+    .kicker{ color:var(--brand-2); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:11px }
+    .muted{ color: var(--muted) }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:12px }
+
+    .pub{ display:grid; grid-template-columns: 1fr auto; gap:8px }
+    .pub > div:last-child{ text-align:right }
+
+    footer{ margin-top:30px; color:var(--muted) } 
+
+    /* Images */
+    .avatar{ width:128px; height:128px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,.15); box-shadow:var(--shadow); }
+    .avatar-wrap{ display:flex; align-items:center; gap:14px; margin:4px 0 10px }
+    .banner{ width:100%; height:160px; border-radius:14px; object-fit:cover; opacity:.95; border:1px solid rgba(255,255,255,.06); }
+    .gallery{ display:grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap:12px }
+    .gallery figure{ margin:0; background:var(--panel); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:8px }
+    .gallery img{ width:100%; height:160px; object-fit:cover; border-radius:10px; cursor:pointer }
+    .gallery figcaption{ font-size:12px; color:var(--muted); margin-top:6px }
+
+    /* Lightbox */
+    .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,.8); display:none; align-items:center; justify-content:center; z-index:50; }
+    .lightbox.open{ display:flex }
+    .lightbox img{ max-width:92vw; max-height:92vh; border-radius:12px; border:1px solid rgba(255,255,255,.2) }
+
+    /* Print: clean one-page PDF for recruiters */
+    @media print{
+      nav, .cta .btn:not(.print), .qr, .web-only{ display:none !important }
+      body{ background:white; color:#111 }
+      .card, .item{ border:1px solid #ddd; box-shadow:none; background:white }
+      a{ color:#000; text-decoration: underline }
+      .wrap{ padding:0 }
+      header{ grid-template-columns:1fr 1fr }
+    }
+  </style>
+
+  <!-- JSON-LD structured data (helps SEO & previews) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "<!-- TODO: Your Name -->",
+    "jobTitle": "Predoctoral Researcher",
+    "affiliation": {"@type":"Organization","name":"<!-- TODO: Institution / Lab -->"},
+    "email": "mailto:<!-- TODO: email@domain -->",
+    "url": "<!-- TODO: canonical URL -->",
+    "sameAs": ["<!-- TODO: LinkedIn URL -->", "<!-- TODO: Google Scholar -->", "<!-- TODO: GitHub -->"],
+    "knowsAbout": ["<!-- TODO: methods, fields -->"],
+    "worksFor": {"@type":"Organization","name":"<!-- TODO: Funding/Center -->"}
+  }
+  </script>
+</head>
+<body>
+  <a class="sr-only" href="#content">Skip to content</a>
+  <div class="wrap" id="top">
+
+    <!-- NAV -->
+    <nav class="card p web-only" aria-label="Primary">
+      <div class="nav" id="nav">
+        <a href="#about">About</a>
+        <a href="#research">Predoc Research</a>
+        <a href="#future">Future Interests</a>
+        <a href="#pubs">Publications</a>
+        <a href="#industry">Private‑Sector</a>
+        <a href="#projects">Projects</a>
+        <a href="#gallery">Images</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header id="about" class="grid">
+      <div class="col-8 card p">
+        <div class="badge" aria-label="Current status">
+          <span>Open to: PhD placements · Research Scientist Internships</span>
+        </div>
+        <h1 class="name"><!-- TODO: Your Name --> </h1>
+        <p class="role">Predoctoral Researcher · <!-- TODO: Lab / Department --> · <!-- TODO: Institution --> </p>
+        <p class="lead"><!-- TODO: Short, recruiter-friendly summary (2–3 lines). Example: I build methods at the intersection of causal inference and ML for healthcare applications, with a focus on counterfactual prediction and evaluation in observational data. --></p>
+
+        <div class="cta">
+          <a class="btn primary" href="#contact">Contact</a>
+          <a class="btn" href="<!-- TODO: link to CV PDF -->" target="_blank" rel="noopener">View CV</a>
+          <a class="btn" href="<!-- TODO: Google Scholar URL -->" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn" href="<!-- TODO: LinkedIn URL -->" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="<!-- TODO: GitHub URL -->" target="_blank" rel="noopener">GitHub</a>
+          <button class="btn print" onclick="window.print()" title="Save as PDF">Print 1‑Pager</button>
+        </div>
+      </div>
+
+      <!-- Recruiter snapshot card -->
+      <aside class="col-4 card p" aria-label="Fast facts">
+        <!-- Optional banner (replace src or remove) -->
+        <img class="banner" src="images/banner-placeholder.jpg" alt="" onerror="this.style.display='none'" />
+        <div class="avatar-wrap">
+          <img class="avatar" src="headshot.jpg" alt="Headshot of <!-- TODO: Your Name -->" onerror="this.style.display='none'" />
+          <div>
+            <strong><!-- TODO: Your Name --></strong><br>
+            <span class="muted">EECS · Embedded/Edge ML</span>
+          </div>
+        </div>
+        <h2 style="margin-top:0">Snapshot</h2>
+        <ul style="margin:0; padding-left:16px">
+          <li><strong>Fields:</strong> Computer Engineering · Electrical Engineering · Embedded/Edge AI · Cyber‑Physical Systems</li>
+          <li><strong>Methods:</strong> DSP · Control & Estimation (Kalman/Particle) · Optimization · Reinforcement Learning · Hardware/Software Co‑Design</li>
+          <li><strong>Data:</strong> Sensor streams (IMU, RF, audio, vision) · Time‑series · Real‑time telemetry</li>
+          <li><strong>Tools:</strong> Python, C/C++ · PyTorch · MATLAB/Simulink · Verilog/VHDL · CUDA · ROS2 · Linux · Git · SQL</li>
+          <li><strong>Location:</strong> <!-- TODO: City, Country (willing to relocate?) --></li>
+          <li><strong>Availability:</strong> <!-- TODO: e.g., PhD Fall 2026; internships Summer 2026 --></li>
+        </ul>
+      </aside>
+    </header>
+
+    <main id="content">
+      <!-- RESEARCH SUMMARY -->
+      <section id="research" class="card p">
+        <h2>Predoctoral Research</h2>
+        <div class="grid">
+          <div class="col-8">
+            <p><!-- TODO: 5–8 sentence overview. What questions drive your work? What is the contribution/impact? Keep it readable for industry & faculty. --></p>
+            <div class="item">
+              <div class="kicker">Representative Result</div>
+              <p style="margin:.3rem 0 0"><!-- TODO: 1–2 line highlight (metric or outcome). Example: Designed a doubly‑robust estimator improving ATE accuracy by 18% on semi‑synthetic EHR benchmarks; open‑sourced code and reproducible pipeline. --></p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="item">
+              <div class="kicker">Advisors</div>
+              <p><!-- TODO: Advisor(s), lab(s). Link names. --></p>
+            </div>
+            <div class="item">
+              <div class="kicker">Collaborators</div>
+              <p><!-- TODO: Key collaborators / partner orgs. --></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FUTURE DIRECTIONS -->
+      <section id="future" class="card p">
+        <h2>Future Research Interests</h2>
+        <p><!-- TODO: 3–5 bullets articulating directions you want to pursue (why now, why you). --></p>
+        <ul>
+          <li><!-- TODO: Direction 1 --></li>
+          <li><!-- TODO: Direction 2 --></li>
+          <li><!-- TODO: Direction 3 --></li>
+        </ul>
+      </section>
+
+      <!-- PUBLICATIONS -->
+      <section id="pubs" class="card p">
+        <h2>Publications & Manuscripts</h2>
+        <div class="item" role="list">
+          <!-- Duplicate this block per pub -->
+          <article class="pub" role="listitem">
+            <div>
+              <strong><!-- TODO: Paper title --></strong><br />
+              <span class="muted"><!-- TODO: Authors --> · <!-- TODO: Venue/Year --></span><br />
+              <span class="mono"><!-- Optional: arXiv:xxxx.xxxxx · DOI:xx.xxxx/xxxx --></span>
+            </div>
+            <div>
+              <a class="btn" href="<!-- TODO: PDF URL -->" target="_blank" rel="noopener">PDF</a>
+              <a class="btn" href="<!-- TODO: Code URL -->" target="_blank" rel="noopener">Code</a>
+              <a class="btn" href="<!-- TODO: Talk/Poster URL -->" target="_blank" rel="noopener">Talk</a>
+            </div>
+          </article>
+          <!-- /pub -->
+        </div>
+      </section>
+
+      <!-- INDUSTRY / PRIVATE-SECTOR -->
+      <section id="industry" class="card p">
+        <h2>Private‑Sector Interests</h2>
+        <div class="grid">
+          <div class="col-8">
+            <p><!-- TODO: 3–4 sentences: where you can add value in industry; problem spaces; impact. --></p>
+            <ul>
+              <li><!-- TODO: Example: Translating SOTA causal inference into deployable uplift models for product experimentation. --></li>
+              <li><!-- TODO: Example: Building robust evaluation pipelines and counterfactual validation for regulated domains. --></li>
+              <li><!-- TODO: Example: Privacy‑preserving methods and data governance. --></li>
+            </ul>
+          </div>
+          <div class="col-4">
+            <div class="item">
+              <div class="kicker">Target Roles</div>
+              <p><!-- TODO: e.g., Research Scientist (ML/AI), Data Scientist (Causal), Applied Scientist, Quant Researcher. --></p>
+            </div>
+            <div class="item">
+              <div class="kicker">Sectors</div>
+              <p><!-- TODO: e.g., Healthcare, Bio, Fintech, Platforms, Climate, Public Sector. --></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS (optional) -->
+      <section id="projects" class="card p">
+        <h2>Selected Projects</h2>
+        <div class="grid">
+          <div class="col-6 item">
+            <div class="kicker">Project</div>
+            <strong><!-- TODO: Project name --></strong>
+            <p class="muted" style="margin:.3rem 0 0"><!-- TODO: 1–2 lines on what you built & results. --></p>
+            <p class="mono"><!-- Optional: stack/tools: Python, PyTorch, Weights & Biases, Prefect, Docker, BigQuery -->
+            </p>
+          </div>
+          <div class="col-6 item">
+            <div class="kicker">Project</div>
+            <strong><!-- TODO: Project name --></strong>
+            <p class="muted" style="margin:.3rem 0 0"><!-- TODO: 1–2 lines. --></p>
+            <p class="mono"><!-- Optional stack --></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMAGES / GALLERY -->
+      <section id="gallery" class="card p">
+        <h2>Images</h2>
+        <p class="muted">Add a headshot above and drop any images here: lab setups, posters, hardware builds, figures, or event photos. Replace the <code>src</code> paths with your files.</p>
+        <div class="gallery">
+          <figure>
+            <img src="images/lab-setup.jpg" alt="Hardware‑in‑the‑loop test bench">
+            <figcaption>HIL test bench for sensor fusion experiments.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/wearable-prototype.jpg" alt="Wearable IMU prototype">
+            <figcaption>Wearable IMU prototype with week‑long battery life.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/poster.jpg" alt="Conference poster">
+            <figcaption>Conference poster (click to zoom).</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="card p">
+        <h2>Skills & Methods</h2>
+        <div class="grid">
+          <div class="col-6 item">
+            <div class="kicker">ML & Stats</div>
+            <p><!-- TODO: e.g., Causal Estimation (ATE/ITE), Uplift Modeling, Bayesian Inference, Deep Learning (PyTorch), Time Series, Survival, NLP. --></p>
+          </div>
+          <div class="col-6 item">
+            <div class="kicker">Data & Engineering</div>
+            <p><!-- TODO: e.g., SQL, Spark, Data Modeling, MLOps, Experimentation Platforms, Docker, Cloud (GCP/AWS). --></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" class="card p">
+        <h2>Education</h2>
+        <ul>
+          <li><strong><!-- TODO: Degree --></strong>, <!-- TODO: Field --> — <!-- TODO: Institution --> (<!-- TODO: Year -->)</li>
+          <li><!-- TODO: Any certificates / minors / relevant coursework --></li>
+        </ul>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="card p">
+        <h2>Contact</h2>
+        <p class="muted">Prefer email for recruiting / collaborations.</p>
+        <div class="cta">
+          <a class="btn primary" id="emailBtn" href="mailto:<!-- TODO: email@domain -->">Email</a>
+          <button class="btn" id="copyEmail">Copy email</button>
+          <a class="btn" href="<!-- TODO: calendar link (Calendly) -->" target="_blank" rel="noopener">Schedule time</a>
+          <a class="btn" href="#top">Back to top</a>
+        </div>
+      </section>
+
+      <footer>
+        <p>Built as a single, portable HTML file. Host on GitHub Pages, Netlify, or your institution page; then encode the URL into a QR for posters and business cards.</p>
+        <p class="mono">v1.0 — Last updated <!-- TODO: YYYY‑MM‑DD --></p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Highlight current nav link based on scroll position
+    const links = [...document.querySelectorAll('.nav a')];
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const id = e.target.getAttribute('id');
+        const link = links.find(a => a.getAttribute('href') === '#' + id);
+        if(link){ link.classList.toggle('active', e.isIntersecting); }
+      })
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    ['about','research','future','pubs','industry','projects','gallery','skills','education','contact'].forEach(id => {
+      const el = document.getElementById(id); if(el) observer.observe(el);
+    });
+
+    // Copy email helper
+    const copyBtn = document.getElementById('copyEmail');
+    if(copyBtn){
+      copyBtn.addEventListener('click', async () => {
+        const mail = (document.getElementById('emailBtn')?.getAttribute('href')||'').replace('mailto:','');
+        try{ await navigator.clipboard.writeText(mail); copyBtn.textContent='Copied!'; setTimeout(()=>copyBtn.textContent='Copy email',1600) }catch(_){ alert('Email: '+mail) }
+      });
+    }
+  </script>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <img id="lightboxImg" alt="">
+  </div>
+</body>
+</html>
