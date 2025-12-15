@@ -6,98 +6,138 @@
   <title>Your Name | Academic CV</title>
 
   <style>
-    :root {
-      --primary: #1f3a5f;     /* deep academic blue */
-      --accent: #9b1c31;      /* subtle crimson accent */
-      --text: #222;
-      --muted: #555;
-      --bg-light: #f7f9fc;
+    :root{
+      --primary:#1f3a5f;     /* deep academic blue */
+      --accent:#9b1c31;      /* subtle crimson accent */
+      --text:#222;
+      --muted:#555;
+      --bg:#ffffff;
+      --panel:#f7f9fc;
+      --border:#e7edf6;
     }
 
-    body {
+    body{
       font-family: "Helvetica Neue", Arial, sans-serif;
       line-height: 1.65;
-      max-width: 950px;
+      max-width: 980px;
       margin: 40px auto;
       padding: 0 20px;
       color: var(--text);
-      background-color: #ffffff;
+      background: var(--bg);
     }
 
-    h1 {
-      color: var(--primary);
-      margin-bottom: 0.2em;
-    }
-
-    h2 {
-      color: var(--primary);
-      border-left: 5px solid var(--accent);
-      padding-left: 12px;
-      margin-top: 50px;
-      margin-bottom: 15px;
-      font-size: 1.35em;
-    }
-
-    h3 {
-      margin-bottom: 4px;
-    }
-
-    a {
+    a{
       color: var(--accent);
       text-decoration: none;
     }
+    a:hover{ text-decoration: underline; }
 
-    a:hover {
-      text-decoration: underline;
+    h1{
+      color: var(--primary);
+      margin: 0 0 6px 0;
+      font-size: 2.0rem;
+      letter-spacing: 0.2px;
     }
 
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 35px;
-      padding-bottom: 25px;
-      border-bottom: 2px solid var(--bg-light);
+    h2{
+      color: var(--primary);
+      border-left: 5px solid var(--accent);
+      padding-left: 12px;
+      margin-top: 48px;
+      margin-bottom: 14px;
+      font-size: 1.35rem;
     }
 
-    .photo-placeholder {
+    .header{
+      display:flex;
+      align-items:center;
+      gap: 32px;
+      padding-bottom: 22px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .photo{
       width: 150px;
       height: 190px;
-      border-radius: 6px;
-      border: 2px dashed #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9em;
+      border-radius: 10px;
+      border: 2px dashed #c8d2e1;
+      background: var(--panel);
+      display:flex;
+      align-items:center;
+      justify-content:center;
       color: var(--muted);
-      background-color: var(--bg-light);
+      font-size: 0.92rem;
+      text-align:center;
+      padding: 10px;
+      box-sizing: border-box;
     }
 
-    .contact {
-      font-size: 0.95em;
+    .contact{
       color: var(--muted);
+      font-size: 0.98rem;
     }
 
-    .section-item {
-      margin-bottom: 25px;
-    }
-
-    ul {
+    .pillbar{
       margin-top: 10px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pill{
+      display:inline-block;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      font-size: 0.92rem;
+      color: var(--primary);
+    }
+
+    .highlight{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      border-radius: 12px;
+    }
+
+    .section-item{ margin-bottom: 22px; }
+
+    ul{
+      margin: 10px 0 0 0;
       padding-left: 20px;
     }
+    li{ margin-bottom: 8px; }
 
-    li {
-      margin-bottom: 8px;
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 760px){
+      .header{ flex-direction: column; align-items:flex-start; }
+      .grid{ grid-template-columns: 1fr; }
     }
 
-    p {
-      margin-top: 0;
+    .linkcard{
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .linkcard .label{
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .linkcard .desc{
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    .highlight {
-      background-color: var(--bg-light);
-      padding: 15px 18px;
-      border-radius: 6px;
+    .small{
+      color: var(--muted);
+      font-size: 0.95rem;
     }
   </style>
 </head>
@@ -106,8 +146,8 @@
 
   <!-- HEADER -->
   <div class="header">
-    <div class="photo-placeholder">
-      Image coming soon
+    <div class="photo">
+      Profile image<br/>coming soon
     </div>
 
     <div>
@@ -116,6 +156,12 @@
         City, State<br />
         Email • GitHub • Google Scholar
       </div>
+
+      <div class="pillbar">
+        <span class="pill">AI / ML for Engineering Systems</span>
+        <span class="pill">Reproducible Research</span>
+        <span class="pill">Experimental Evaluation</span>
+      </div>
     </div>
   </div>
 
@@ -123,15 +169,73 @@
   <h2>Research Interests</h2>
   <div class="highlight">
     <p>
-      I am passionate about advancing technology accessibility and sustainability through computer
-      and electrical engineering. My research interests focus on applying artificial intelligence and
-      machine learning to the modeling, measurement, and optimization of real-world engineering
-      systems, with particular attention to connectivity, energy efficiency, affordability, and
-      reliability. My current work explores computer networking and broadband equity, including
-      internet speed test contextualization and system-level performance evaluation. I aim to develop
-      adaptive, efficient, and inclusive technologies that bridge advanced engineering innovation with
-      real-world societal needs.
+      I am passionate about advancing technology accessibility and sustainability through computer and
+      electrical engineering. My research interests focus on applying artificial intelligence and machine
+      learning to the modeling, measurement, and optimization of real-world engineering systems, with
+      particular attention to energy efficiency, affordability, and reliability. My current work applies deep
+      learning methods to predictive maintenance and system performance evaluation in industrial
+      engineering contexts, resulting in a preprint manuscript on deep learning–based predictive
+      maintenance. I aim to develop adaptive, efficient, and inclusive technologies that bridge advanced
+      engineering innovation with real-world societal needs.
     </p>
+  </div>
+
+  <!-- LINKS / PROFILES -->
+  <h2>Links & Profiles</h2>
+  <div class="grid">
+
+    <div class="linkcard">
+      <div class="label">Book</div>
+      <p class="desc">
+        <a href="https://www.amazon.com/We-Can-Do-Better-Generation/dp/1958992054" target="_blank" rel="noopener">
+          We Can Do Better: Setting the Pace for the Next Generation
+        </a>
+      </p>
+    </div>
+
+    <div class="linkcard">
+      <div class="label">Preprint (TechRxiv)</div>
+      <p class="desc">
+        <a href="https://www.techrxiv.org/doi/full/10.36227/techrxiv.176463769.97486465/v1" target="_blank" rel="noopener">
+          Deep Learning-Based Predictive Maintenance for Industrial Engineering Systems
+        </a>
+      </p>
+    </div>
+
+    <div class="linkcard">
+      <div class="label">ORCID</div>
+      <p class="desc">
+        <a href="https://orcid.org/0009-0009-5976-3532" target="_blank" rel="noopener">
+          https://orcid.org/0009-0009-5976-3532
+        </a>
+      </p>
+    </div>
+
+    <div class="linkcard">
+      <div class="label">ResearchGate</div>
+      <p class="desc">
+        <a href="https://www.researchgate.net/publication/398245774_Deep_Learning-Based_Predictive_Maintenance_for_Industrial_Engineering_Systems" target="_blank" rel="noopener">
+          Preprint page (ResearchGate)
+        </a>
+      </p>
+    </div>
+
+    <div class="linkcard">
+      <div class="label">UCSB Summer Scholars</div>
+      <p class="desc">
+        <a href="https://www.graddiv.ucsb.edu/past-summer-scholars" target="_blank" rel="noopener">
+          UCSB Graduate Division — Past Summer Scholars
+        </a>
+      </p>
+    </div>
+
+    <div class="linkcard">
+      <div class="label">CV / Scholar Profiles</div>
+      <p class="desc small">
+        Add links here later (PDF CV, Google Scholar, lab page, etc.).
+      </p>
+    </div>
+
   </div>
 
   <!-- EDUCATION -->
@@ -149,8 +253,8 @@
     <em>Research Assistant</em> | Dates
     <ul>
       <li>Conduct supervised and unsupervised research in artificial intelligence, machine learning, and computer vision.</li>
-      <li>Design, train, and evaluate learning-based models with emphasis on experimental rigor and reproducibility.</li>
-      <li>Develop quantitative and qualitative evaluation pipelines for system-level performance analysis.</li>
+      <li>Design, train, and evaluate machine learning and deep learning models with emphasis on experimental rigor and reproducibility.</li>
+      <li>Develop quantitative and qualitative evaluation pipelines for model performance analysis.</li>
       <li>Manage experiment tracking, documentation, and visualization to support reproducible research workflows.</li>
     </ul>
   </div>
@@ -159,9 +263,9 @@
     <strong>Systems and Network Lab (SNL)</strong>, University of California, Santa Barbara<br />
     <em>Research Scholar (Full-Time Summer Researcher)</em> | Summer 2023, Summer 2024
     <ul>
-      <li>Conducted replication studies of machine learning–based speed test contextualization methods.</li>
-      <li>Reconstructed experimental pipelines and evaluated robustness across heterogeneous environments.</li>
-      <li>Performed contextual feature engineering and system-level analysis.</li>
+      <li>Conducted a replication study of a published paper on speed test contextualization using machine learning.</li>
+      <li>Reconstructed experimental pipelines, implemented preprocessing and models, and analyzed discrepancies between reported and observed results.</li>
+      <li>Performed contextual feature engineering and evaluated model robustness across datasets and modeling assumptions.</li>
       <li>Emphasized methodological transparency and controlled experimentation.</li>
     </ul>
   </div>
@@ -171,4 +275,67 @@
 
   <div class="section-item">
     <strong>Books</strong><br />
-    Jomo, D. (2023). <em>We Can Do Better: Setting the Pace for the Next Generati
+    Jomo, D. (2023). <em>We Can Do Better: Setting the Pace for the Next Generation</em>. Anchor Book Press.
+    <a href="https://www.amazon.com/We-Can-Do-Better-Generation/dp/1958992054" target="_blank" rel="noopener">Link</a>
+  </div>
+
+  <div class="section-item">
+    <strong>Preprints</strong><br />
+    Jomo, D. (2025). <em>Deep learning-based predictive maintenance for industrial engineering systems</em>.
+    TechRxiv (preprint).
+    <a href="https://www.techrxiv.org/doi/full/10.36227/techrxiv.176463769.97486465/v1" target="_blank" rel="noopener">Link</a>
+  </div>
+
+  <!-- PRESENTATIONS -->
+  <h2>Posters & Presentations</h2>
+  <ul>
+    <li>
+      Jomo, D. (2025). <em>Replication study – Multicity validation of broadband subscription tier (BST) inference for speed test contextualization</em> (Poster).
+      CSEP 2025 Research Colloquium, University of California, Santa Barbara.
+    </li>
+    <li>
+      Jomo, D. (2024). <em>Last hop medium classifier for speed test</em> (Oral/Poster Presentation).
+      Cal-Bridge Annual Fall Conference, Irvine, CA.
+    </li>
+  </ul>
+
+  <!-- TEACHING -->
+  <h2>Teaching Experience</h2>
+  <div class="section-item">
+    <strong>City College of San Francisco</strong>, San Francisco, CA
+    <ul>
+      <li><em>Tutor – Python & SQL</em> | Sep 2021 – May 2023</li>
+      <li><em>Teaching Assistant – Intermediate Python & SQL</em> | Aug 2022 – Dec 2022</li>
+    </ul>
+  </div>
+
+  <!-- PROFESSIONAL -->
+  <h2>Professional Experience</h2>
+  <div class="section-item">
+    <strong>City and County of San Francisco – Public Works</strong><br />
+    <em>Design Trainee</em> | June 2022 – June 2024
+    <ul>
+      <li>Developed Python scripts and data-driven workflows to automate engineering tasks.</li>
+      <li>Collaborated with interdisciplinary teams to integrate computational tools into infrastructure design.</li>
+    </ul>
+  </div>
+
+  <!-- SKILLS -->
+  <h2>Skills</h2>
+  <p>
+    <strong>Programming:</strong> Python, C++, SQL<br />
+    <strong>AI & ML:</strong> Supervised & Unsupervised Learning, Deep Learning, Model Evaluation, GMM, KDE<br />
+    <strong>Frameworks & Tools:</strong> PyTorch, TensorFlow, Docker, AWS, BigQuery<br />
+    <strong>Databases:</strong> PostgreSQL, MySQL, Oracle SQL<br />
+    <strong>Research Practices:</strong> Reproducibility, Experimental Design, Statistical Evaluation
+  </p>
+
+  <!-- SERVICE -->
+  <h2>Service & Volunteer Work</h2>
+  <ul>
+    <li>San Francisco Food Bank — Volunteer</li>
+    <li>Tenderloin Neighborhood Development Corporation — Volunteer</li>
+  </ul>
+
+</body>
+</html>
